@@ -1,0 +1,20 @@
+---
+title: "scraper"
+output: html_document
+---
+
+```{r Load Libraries}
+library(tidyverse)
+library(tabulizer)
+```
+
+```{r}
+link <- "https://higherlogicdownload.s3.amazonaws.com/NASBO/9d2d2db1-c943-4f1b-b750-0fca152d64c2/UploadedImages/SER%20Archive/2019_State_Expenditure_Report-S.pdf"
+
+table <- extract_tables(link,
+               pages = 16,
+               method = "stream")
+
+exp <- as.data.frame(table[[1]])
+```
+
