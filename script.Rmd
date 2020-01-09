@@ -6,6 +6,7 @@ output: html_document
 ```{r Load Libraries}
 library(tidyverse)
 library(tabulizer)
+library(openxlsx)
 ```
 
 ```{r}
@@ -16,5 +17,7 @@ table <- extract_tables(link,
                method = "stream")
 
 exp <- as.data.frame(table[[1]])
+
+write.xlsx(exp,"nasbo_table.xlsx")
 ```
 
